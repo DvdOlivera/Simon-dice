@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Simon Dice</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+
+</head>
+<body>
+    <div class="container">
+        <div class="opciones-del-juego">
+            <p>BIENVENIDO AL JUEGO SIMON DICE! <br>
+              Clickeá en el botón "Nueva Partida" y juguemos!
+            </p>
+            <button id="iniciar-partida">Nueva Partida</button>
+            <button id="resetear-partida">Resetear</button>
+ 
+            <div class="informacion-partida-actual">
+             <label  for="contador-de-partidas" >Contador de partidas:</label>
+                <div class="contador-de-partidas"></div>
+             <div class="turno"></div>
+             <div class="resultado-partida-actual"></div>
+                
+            </div>
+          
+            <div class="puntuacion-total"></div>
+        </div>
+         <div class="area-de-juego">
+             <div class="area verde desactive"></div>
+             <div class="area amarillo desactive"></div>
+             <div class="area rojo desactive"></div>
+             <div class="area azul desactive"></div>
+         </div>
+ 
+     </div>
+     <script src='main.js'></script>
+
+</body>
+</html>

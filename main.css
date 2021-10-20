@@ -1,0 +1,59 @@
+.container{
+    display: grid;
+    grid-template-areas: 
+    "opciones-de-juego area-de-juego";
+    gap: 5px;
+    grid-template:
+    "opciones-de-juego area-de-juego" 200px/
+    200px ;
+
+}
+
+.opciones-de-juego{
+    grid-area: opciones-de-juego;
+}
+
+.area-de-juego{
+    grid-area: area-de-juego;
+    display: grid;
+    grid-template-areas: 
+    "verde amarillo"
+    "rojo azul";
+    gap: 5px;
+    grid-template:
+    "verde amarillo" 200px
+    "rojo azul"200px /
+    200px 200px;
+  
+
+}
+.desactive{
+    opacity: 0.3;
+   
+};
+     
+.area{
+
+    border-radius:20px;
+}
+.rojo{
+    background-color: red;
+    grid-area: rojo;
+    
+    
+}
+.amarillo{
+    background-color: yellow;
+    grid-area: amarillo;
+    
+}
+.azul{
+    background-color: blue;
+    grid-area: azul;
+    
+}
+.verde{
+    background-color: green;
+    grid-area: verde;
+    
+}
