@@ -1,59 +1,134 @@
-.container{
+body, html {
+margin: 0;
+padding: 0;
+background-color: rgb(59, 59, 59);
+
+
+}
+#container{
+    
+    width: 100%;
+    margin: auto;
     display: grid;
     grid-template-areas: 
     "opciones-de-juego area-de-juego";
     gap: 5px;
     grid-template:
-    "opciones-de-juego area-de-juego" 200px/
-    200px ;
-
-}
-
-.opciones-de-juego{
-    grid-area: opciones-de-juego;
-}
-
-.area-de-juego{
-    grid-area: area-de-juego;
-    display: grid;
-    grid-template-areas: 
-    "verde amarillo"
-    "rojo azul";
-    gap: 5px;
-    grid-template:
-    "verde amarillo" 200px
-    "rojo azul"200px /
-    200px 200px;
-  
-
-}
-.desactive{
-    opacity: 0.3;
+    "opciones-de-juego area-de-juego"/
+    500px ;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
    
-};
-     
-.area{
+ 
+}
 
-    border-radius:20px;
+.opciones-de-juego{  
+   margin-top: 20px;
+   display: flex;
+   justify-items: center;
+   justify-content: center;
+   grid-area: opciones-de-juego;
+}
+ 
+#iniciar-partida:hover{
+ background-color: rgb(255, 65, 65);
+ color: white;
+}
+#iniciar-partida{
+    height: 50px;
+    font-size: 20px;
+    font-family: 'Gluten', cursive;
+    background-color: brown;
+    border: 5px solid black;
+    border-radius: 10px;
+}
+p {
+    font-family: 'Gluten', cursive;
+    font-size: 30px;
+    color: white;
+}
+#area-de-juego{
+    margin: 30px;
+    transform: perspective( 700px ) rotateX( 45deg );
+    width: 410px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-radius: 50%;
+    border: solid black 20px;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+
+}
+.deshabilitar-click{
+    pointer-events:none
+}
+
+.desactivo{
+    filter: brightness(30%);
+-webkit-filter: brightness(30%);
+-moz-filter: brightness(30%);
+-o-filter: brightness(30%);
+-ms-filter: brightness(30%);
+   
+}
+.informacion-partida{
+    color: white;
+    margin-top: 20px;
+ 
+    font-size: 30px;
+    font-family: 'Gluten', cursive;
+}    
+#contador-de-partidas{
+    margin-top: 10px;
+} 
+.area{
+    
+    width: 12.5em;
+    height: 12.5em;
+   
 }
 .rojo{
-    background-color: red;
-    grid-area: rojo;
+    background-color: rgb(255, 49, 49);
+
     
     
 }
 .amarillo{
-    background-color: yellow;
-    grid-area: amarillo;
+    background-color: rgb(255, 255, 79);
+ 
     
 }
 .azul{
-    background-color: blue;
-    grid-area: azul;
+    background-color: rgb(45, 66, 255);
+
     
 }
 .verde{
-    background-color: green;
-    grid-area: verde;
-    
+    background-color: rgb(53, 230, 53);
+
 }
+
+@media (max-width: 1200px) {
+    #container{
+        grid-template-areas: 
+       "opciones-de-juego"
+        "area-de-juego";
+        grid-template:
+        "opciones-de-juego"300px
+         "area-de-juego"
+        500px ;
+        
+     
+     }
+     .area{
+    
+        width: 5em;
+        height: 5em;
+       
+    }
+    #area-de-juego{
+       width: 260px; 
+    }
+    }
