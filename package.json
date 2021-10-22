@@ -1,1 +1,20 @@
-{}
+{
+  "name": "simon-dice",
+  "description": "juego Simon dice en Javascript",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DvdOlivera/Simon-dice.git"
+  },
+  "author": "David Olivera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DvdOlivera/Simon-dice/issues"
+  },
+  "homepage": "https://github.com/DvdOlivera/Simon-dice#readme"
+}
