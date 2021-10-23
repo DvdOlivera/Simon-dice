@@ -39,7 +39,7 @@ document.querySelectorAll(".area").forEach(element => {
 document.querySelector("#boton-iniciar-partida").addEventListener("click",iniciarPartida)
    
 function iniciarPartida(){
-  ocultarBoton()  
+  inhabilitarBoton()  
   borrarTurnos()
   actualizarContadorDeTurnos()
   borrarMovimientosMaquina()  
@@ -49,11 +49,11 @@ function iniciarPartida(){
 function borrarTextoPartida(){
     document.querySelector("#resultado-partida-actual").innerHTML= ""
 }
-function ocultarBoton(){
+function inhabilitarBoton(){
     document.querySelector("#contenedor-boton").classList.add("inhabilitado")
     document.querySelector("#boton-iniciar-partida").classList.add("deshabilitar-click")
 }
-function mostrarBoton(){
+function habilitarBoton(){
     document.querySelector("#contenedor-boton").classList.remove("inhabilitado")
     document.querySelector("#boton-iniciar-partida").classList.remove("deshabilitar-click")
 }
@@ -139,7 +139,7 @@ function compararMovimientos(){
          deshabilitarClick();
          sonidoClickError()
          await retraso(2000); 
-         mostrarBoton()
+         habilitarBoton()
         };
 
     });
