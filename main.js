@@ -1,116 +1,116 @@
 function sonidoClickAmarillo(){
     const bleepAmarillo = new Audio();
-    bleepAmarillo.src="sounds/sonido-amarillo.wav"
+    bleepAmarillo.src="sounds/sonido-amarillo.wav";
     bleepAmarillo.currentTime = 0;
     bleepAmarillo.play ();
 };
 
 function sonidoClickAzul(){
     const bleepAzul = new Audio();
-    bleepAzul.src="sounds/sonido-azul.wav"
+    bleepAzul.src="sounds/sonido-azul.wav";
     bleepAzul.currentTime = 0;
     bleepAzul.play ();
 };
 
 function sonidoClickRojo(){
     const bleepRojo = new Audio();
-    bleepRojo.src="sounds/sonido-rojo.wav"
+    bleepRojo.src="sounds/sonido-rojo.wav";
     bleepRojo.currentTime = 0;
     bleepRojo.play ();    
 };
 
 function sonidoClickVerde(){
     const bleepVerde = new Audio();
-    bleepVerde.src="sounds/sonido-verde.wav"
+    bleepVerde.src="sounds/sonido-verde.wav";
     bleepVerde.currentTime = 0;
     bleepVerde.play ();  
 };
 
 function sonidoClickError(){
     const bleepError = new Audio();
-    bleepError.src="sounds/sonido-error.wav"
+    bleepError.src="sounds/sonido-error.wav";
     bleepError.currentTime = 0;
     bleepError.play ();   
-}
+};
 
 document.querySelectorAll(".area").forEach(element => {
     element.addEventListener("click",manejarMovimientoUsuario);
 });
-document.querySelector("#boton-iniciar-partida").addEventListener("click",iniciarPartida)
+document.querySelector("#boton-iniciar-partida").addEventListener("click",iniciarPartida);
    
 function iniciarPartida(){
-  inhabilitarBoton()  
-  actualizarContadorDeTurnos(0)
-  borrarMovimientosMaquina()  
+  inhabilitarBoton();  
+  actualizarContadorDeTurnos(0);
+  borrarMovimientosMaquina();  
   ejecutarMaquina();
-}
+};
 
 function borrarTextoPartida(){
-    document.querySelector("#resultado-partida-actual").innerHTML= ""
-}
+    document.querySelector("#resultado-partida-actual").innerHTML= "";
+};
+
 function inhabilitarBoton(){
-    document.querySelector("#contenedor-boton").classList.add("inhabilitado")
-    document.querySelector("#boton-iniciar-partida").classList.add("deshabilitar-click")
-}
+    document.querySelector("#contenedor-boton").classList.add("inhabilitado");
+    document.querySelector("#boton-iniciar-partida").classList.add("deshabilitar-click");
+};
+
 function habilitarBoton(){
-    document.querySelector("#contenedor-boton").classList.remove("inhabilitado")
-    document.querySelector("#boton-iniciar-partida").classList.remove("deshabilitar-click")
-}
+    document.querySelector("#contenedor-boton").classList.remove("inhabilitado");
+    document.querySelector("#boton-iniciar-partida").classList.remove("deshabilitar-click");
+};
 
 function mostrarMovimientoMaquina(numero) {
     if (numero === 0){
-        sonidoClickVerde()
+        sonidoClickVerde();
     }
     else if (numero === 1) {
-        sonidoClickAmarillo()
+        sonidoClickAmarillo();
     }
     else if (numero === 2) {
-        sonidoClickRojo()
+        sonidoClickRojo();
     }
     else if (numero === 3) {
-        sonidoClickAzul()
-    }
+        sonidoClickAzul();
+    };
     document.querySelectorAll(".area")[numero].classList.remove("desactivo") 
     setTimeout(()=> {
         document.querySelectorAll(".area")[numero].classList.add("desactivo"); 
-    }, 300)
-}
-function borrarTurnos(){
-    turnos = 0
-}
+    }, 300);
+};
+
 function retraso(tiempo) {
     return new Promise(resolve =>{
         setTimeout(resolve, tiempo);
     } );
 }
-const movimientosMaquina = []
-const movimientosUsuario = []
+const movimientosMaquina = [];
+const movimientosUsuario = [];
 const turnos = 0;
 
 async function ejecutarMaquina(){
-    deshabilitarClick()
-    borrarTextoPartida()
-    borrarMovimientosUsuario()
+    deshabilitarClick();
+    borrarTextoPartida();
+    borrarMovimientosUsuario();
     movimientosMaquina.push(obtenerNumeroAlAzar(0,4));  
     for (let movimiento of movimientosMaquina){
     mostrarMovimientoMaquina(movimiento);
     await retraso(700); 
     };
     habilitarClick();
-}
+};
 
 function habilitarClick() {
-document.querySelector("#area-de-juego").classList.remove("deshabilitar-click")
+document.querySelector("#area-de-juego").classList.remove("deshabilitar-click");
 };
 function deshabilitarClick() {
-    document.querySelector("#area-de-juego").classList.add("deshabilitar-click")
+    document.querySelector("#area-de-juego").classList.add("deshabilitar-click");
 };
  function manejarMovimientoUsuario(e){
     
     guardarMovimientoUsuario(e);
-    compararMovimientos()
+    compararMovimientos();
 
-}
+};
 
 function guardarMovimientoUsuario(e){
     if(e.target.classList[1] === "verde"){
@@ -125,8 +125,8 @@ function guardarMovimientoUsuario(e){
    } else if(e.target.classList[1] === "azul"){
         mostrarMovimientoMaquina(3);
        movimientosUsuario.push(3); 
-   }
-}
+   };
+};
 
 function compararMovimientos(){
     let resultado = true;
@@ -136,7 +136,7 @@ function compararMovimientos(){
          resultado = false; 
          imprimirResultado(resultado)
          deshabilitarClick();
-         sonidoClickError()
+         sonidoClickError();
          await retraso(2000); 
          habilitarBoton()
         };
@@ -144,17 +144,17 @@ function compararMovimientos(){
     });
 
     if(movimientosMaquina.length === movimientosUsuario.length && resultado === true){
-        imprimirResultado(resultado)
+        imprimirResultado(resultado);
         deshabilitarClick();
         setTimeout(() => {
-            actualizarContadorDeTurnos(movimientosMaquina.length)
+            actualizarContadorDeTurnos(movimientosMaquina.length);
             ejecutarMaquina();
         }, 1500);
     };
 };
 function actualizarContadorDeTurnos(turno){
-    document.querySelector("#contador-de-turnos").innerHTML = turno
-}
+    document.querySelector("#contador-de-turnos").innerHTML = turno;
+};
 
 function borrarMovimientosMaquina(){
     movimientosMaquina.splice(0, movimientosMaquina.length);
@@ -163,6 +163,7 @@ function borrarMovimientosMaquina(){
 function borrarMovimientosUsuario(){
     movimientosUsuario.splice(0, movimientosUsuario.length);
 };
+
 function obtenerNumeroAlAzar(min,max) {
     return Math.floor(Math.random() * (max - min)) + min;
   };
@@ -175,10 +176,10 @@ function obtenerNumeroAlAzar(min,max) {
      else if (resultado=== false ){
          pintarResultado("rgb(255, 60, 60)");
         document.querySelector("#resultado-partida-actual").innerHTML= "Perdiste! Mejor suerte la próxima"
-     }
- } 
+     };
+ }; 
 
  function pintarResultado(color){
     document.querySelector("#resultado-partida-actual").style.color = color
- }
-
+ };
+  
