@@ -1,47 +1,44 @@
 body, html {
 margin: 0;
 padding: 0;
-background-color: rgb(59, 59, 59);
+background-color: rgb(61, 61, 61);
 
 
 }
 #container{
     
-    width: 100%;
-    margin: auto;
-    display: grid;
-    grid-template-areas: 
-    "opciones-de-juego area-de-juego";
-    gap: 5px;
-    grid-template:
-    "opciones-de-juego area-de-juego"/
-    500px ;
+    display: flex;
+    flex-direction: row;
+    gap:5px;
     justify-content: center;
     align-items: center;
     text-align: center;
    
  
 }
-
-.opciones-de-juego{  
-   margin-top: 20px;
-   display: flex;
-   justify-items: center;
-   justify-content: center;
-   grid-area: opciones-de-juego;
+#resultado-partida-actual{
+    height: 30px;
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: 800; 
+    color: rgb(2, 141, 255);
 }
+
  
-#iniciar-partida:hover{
- background-color: rgb(255, 65, 65);
+#boton-iniciar-partida:hover{
+ background-color: rgb(59, 221, 100);
  color: white;
 }
-#iniciar-partida{
+#boton-iniciar-partida{
     height: 50px;
     font-size: 20px;
     font-family: 'Gluten', cursive;
-    background-color: brown;
+    background-color: rgb(37, 141, 63);
     border: 5px solid black;
     border-radius: 10px;
+}
+.ocultar{
+    display: none;
 }
 p {
     font-family: 'Gluten', cursive;
@@ -49,9 +46,10 @@ p {
     color: white;
 }
 #area-de-juego{
-    margin: 30px;
+   
     transform: perspective( 700px ) rotateX( 45deg );
     width: 410px;
+    height: 410px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -80,8 +78,8 @@ p {
     font-size: 30px;
     font-family: 'Gluten', cursive;
 }    
-#contador-de-partidas{
-    margin-top: 10px;
+#contador-de-turnos{
+    margin-top: 20px;
 } 
 .area{
     
@@ -110,25 +108,28 @@ p {
 
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1240px) {
     #container{
-        grid-template-areas: 
-       "opciones-de-juego"
-        "area-de-juego";
-        grid-template:
-        "opciones-de-juego"300px
-         "area-de-juego"
-        500px ;
-        
-     
+      flex-direction: column;
      }
-     .area{
+     #area-de-juego{
+        top:100px; 
+        margin: 10px;
+     }
+}
+@media (max-width:600px){
+    .area{
     
-        width: 5em;
-        height: 5em;
+        width: 6.5em;
+        height: 6.5em;
        
     }
     #area-de-juego{
-       width: 260px; 
+       
+        width: 220px;
+        height: 220px;
+        gap: 10px;
     }
-    }
+}
+  
+   

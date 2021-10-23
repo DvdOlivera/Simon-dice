@@ -39,25 +39,29 @@ function sonidoClickError(){
     
 }
 
-
-
 document.querySelectorAll(".area").forEach(element => {
     element.addEventListener("click",manejarMovimientoUsuario);
 });
-document.querySelector("#iniciar-partida").addEventListener("click",iniciarPartida)
-
+document.querySelector("#boton-iniciar-partida").addEventListener("click",iniciarPartida)
+   
 function iniciarPartida(){
-  deshabilitarBoton()  
-  borrarPartidas()
-  actualizarContadorDePartidas()
+  ocultarBoton()  
+  borrarTurnos()
+  actualizarContadorDeTurnos()
   borrarMovimientosMaquina()  
   ejecutarMaquina();
 }
-function deshabilitarBoton(){
-    document.querySelector("#iniciar-partida").classList.add("deshabilitar-click")
+
+function borrarTextoPartida(){
+    document.querySelector("#resultado-partida-actual").innerHTML= ""
 }
-function habilitarBoton(){
-    document.querySelector("#iniciar-partida").classList.remove("deshabilitar-click")
+function ocultarBoton(){
+    
+    document.querySelector("#boton-iniciar-partida").classList.add("ocultar")
+}
+function mostrarBoton(){
+
+    document.querySelector("#boton-iniciar-partida").classList.remove("ocultar")
 }
 
 function mostrarMovimientoMaquina(numero) {
@@ -78,8 +82,8 @@ function mostrarMovimientoMaquina(numero) {
         document.querySelectorAll(".area")[numero].classList.add("desactivo"); 
     }, 300)
 }
-function borrarPartidas(){
-    partidas = 0
+function borrarTurnos(){
+    turnos = 0
 }
 function retraso(tiempo) {
     return new Promise(resolve =>{
@@ -88,9 +92,11 @@ function retraso(tiempo) {
 }
 let movimientosMaquina = []
 let movimientosUsuario = []
-let partidas = 0;
+let turnos = 0;
+
 async function ejecutarMaquina(){
     deshabilitarClick()
+    borrarTextoPartida()
     borrarMovimientosUsuario()
     movimientosMaquina.push(obtenerNumeroAlAzar(0,4));  
     for (let movimiento of movimientosMaquina){
@@ -130,36 +136,34 @@ function guardarMovimientoUsuario(e){
 }
 
 function compararMovimientos(){
-    let error = false;
+    let resultado = true;
     movimientosUsuario.forEach(async (movimiento,i) =>{
         if (movimiento === movimientosMaquina[i]){
        }else{
-         error = true;  
+         resultado = false; 
+         imprimirResultado(resultado)
          deshabilitarClick();
          sonidoClickError()
-         finalizarPartida();
          await retraso(3000); 
-         habilitarBoton()
+         mostrarBoton()
         };
 
     });
 
-    if(movimientosMaquina.length === movimientosUsuario.length && error === false){
+    if(movimientosMaquina.length === movimientosUsuario.length && resultado === true){
+        imprimirResultado(resultado)
         deshabilitarClick();
         setTimeout(() => {
-           partidas++
-            actualizarContadorDePartidas(partidas)
+           turnos++
+           console.log(turnos)
+            actualizarContadorDeTurnos(turnos)
             ejecutarMaquina();
         }, 1500);
     };
 };
-function actualizarContadorDePartidas(partidas = 0){
-    document.querySelector("#contador-de-partidas").innerHTML = partidas
+function actualizarContadorDeTurnos(turnos = 0){
+    document.querySelector("#contador-de-turnos").innerHTML = turnos
 }
-function finalizarPartida(){
-    
-    
-};
 
 function borrarMovimientosMaquina(){
     movimientosMaquina =[];
@@ -171,4 +175,19 @@ function borrarMovimientosUsuario(){
 function obtenerNumeroAlAzar(min,max) {
     return Math.floor(Math.random() * (max - min)) + min;
   };
+
+ function imprimirResultado(resultado){
+     if (resultado === true){
+         pintarResultado("rgb(30, 255, 0)");
+         document.querySelector("#resultado-partida-actual").innerHTML= "Bien Hecho!"
+     }
+     else if (resultado=== false ){
+         pintarResultado("rgb(255, 60, 60)");
+        document.querySelector("#resultado-partida-actual").innerHTML= "Perdiste! Mejor suerte la próxima"
+     }
+ } 
+
+ function pintarResultado(color){
+    document.querySelector("#resultado-partida-actual").style.color = color
+ }
 
