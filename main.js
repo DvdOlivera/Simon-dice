@@ -1,26 +1,24 @@
+const bleepRojo = new Audio("sounds/sonido-rojo.wav");
+const bleepVerde = new Audio("sounds/sonido-verde.wav");
+const bleepAzul = new Audio("sounds/sonido-azul.wav");
+const bleepAmarillo = new Audio("sounds/sonido-amarillo.wav");
+const bleepError = new Audio("sounds/sonido-error.wav");
+
 function ejecutarSonido (colorArea){
     
         if (colorArea === "rojo" ){
-            const bleepRojo = new Audio();
-            bleepRojo.src="sounds/sonido-rojo.wav";
             bleepRojo.currentTime = 0;
             bleepRojo.play (); 
         }
         else if (colorArea === "verde" ){
-            const bleepVerde = new Audio();
-            bleepVerde.src="sounds/sonido-verde.wav";
             bleepVerde.currentTime = 0;
             bleepVerde.play ();
         }
         else if (colorArea === "azul" ){
-            const bleepAzul = new Audio();
-            bleepAzul.src="sounds/sonido-azul.wav";
             bleepAzul.currentTime = 0;
             bleepAzul.play ();
         }
         else if (colorArea === "amarillo" ){
-            const bleepAmarillo = new Audio();
-            bleepAmarillo.src="sounds/sonido-amarillo.wav";
             bleepAmarillo.currentTime = 0;
             bleepAmarillo.play ();
         };
@@ -28,8 +26,6 @@ function ejecutarSonido (colorArea){
 }
 
 function sonidoClickError(){
-    const bleepError = new Audio();
-    bleepError.src="sounds/sonido-error.wav";
     bleepError.currentTime = 0;
     bleepError.play ();   
 };
