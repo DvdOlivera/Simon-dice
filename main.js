@@ -40,8 +40,7 @@ document.querySelector("#boton-iniciar-partida").addEventListener("click",inicia
    
 function iniciarPartida(){
   inhabilitarBoton()  
-  borrarTurnos()
-  actualizarContadorDeTurnos()
+  actualizarContadorDeTurnos(0)
   borrarMovimientosMaquina()  
   ejecutarMaquina();
 }
@@ -84,9 +83,9 @@ function retraso(tiempo) {
         setTimeout(resolve, tiempo);
     } );
 }
-let movimientosMaquina = []
-let movimientosUsuario = []
-let turnos = 0;
+const movimientosMaquina = []
+const movimientosUsuario = []
+const turnos = 0;
 
 async function ejecutarMaquina(){
     deshabilitarClick()
@@ -148,23 +147,21 @@ function compararMovimientos(){
         imprimirResultado(resultado)
         deshabilitarClick();
         setTimeout(() => {
-           turnos++
-           console.log(turnos)
-            actualizarContadorDeTurnos(turnos)
+            actualizarContadorDeTurnos(movimientosMaquina.length)
             ejecutarMaquina();
         }, 1500);
     };
 };
-function actualizarContadorDeTurnos(turnos = 0){
-    document.querySelector("#contador-de-turnos").innerHTML = turnos
+function actualizarContadorDeTurnos(turno){
+    document.querySelector("#contador-de-turnos").innerHTML = turno
 }
 
 function borrarMovimientosMaquina(){
-    movimientosMaquina =[];
+    movimientosMaquina.splice(0, movimientosMaquina.length);
 };
 
 function borrarMovimientosUsuario(){
-    movimientosUsuario =[];
+    movimientosUsuario.splice(0, movimientosUsuario.length);
 };
 function obtenerNumeroAlAzar(min,max) {
     return Math.floor(Math.random() * (max - min)) + min;
