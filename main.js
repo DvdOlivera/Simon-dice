@@ -1,7 +1,7 @@
 
 function sonidoClickAmarillo(){
     const bleepAmarillo = new Audio();
-    bleepAmarillo.src="/sounds/sonido-amarillo.wav"
+    bleepAmarillo.src="sounds/sonido-amarillo.wav"
     bleepAmarillo.currentTime = 0;
     bleepAmarillo.play ();
     
@@ -9,7 +9,7 @@ function sonidoClickAmarillo(){
 
 function sonidoClickAzul(){
     const bleepAzul = new Audio();
-    bleepAzul.src="/sounds/sonido-azul.wav"
+    bleepAzul.src="sounds/sonido-azul.wav"
     bleepAzul.currentTime = 0;
     bleepAzul.play ();
     
@@ -17,7 +17,7 @@ function sonidoClickAzul(){
 
 function sonidoClickRojo(){
     const bleepRojo = new Audio();
-    bleepRojo.src="/sounds/sonido-rojo.wav"
+    bleepRojo.src="sounds/sonido-rojo.wav"
     bleepRojo.currentTime = 0;
     bleepRojo.play ();
     
@@ -25,7 +25,7 @@ function sonidoClickRojo(){
 
 function sonidoClickVerde(){
     const bleepVerde = new Audio();
-    bleepVerde.src="/sounds/sonido-verde.wav"
+    bleepVerde.src="sounds/sonido-verde.wav"
     bleepVerde.currentTime = 0;
     bleepVerde.play ();
     
@@ -33,7 +33,7 @@ function sonidoClickVerde(){
 
 function sonidoClickError(){
     const bleepError = new Audio();
-    bleepError.src="/sounds/sonido-error.wav"
+    bleepError.src="sounds/sonido-error.wav"
     bleepError.currentTime = 0;
     bleepError.play ();
     
