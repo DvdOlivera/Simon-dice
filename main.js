@@ -56,12 +56,12 @@ function borrarTextoPartida(){
     document.querySelector("#resultado-partida-actual").innerHTML= ""
 }
 function ocultarBoton(){
-    
-    document.querySelector("#boton-iniciar-partida").classList.add("ocultar")
+    document.querySelector("#contenedor-boton").classList.add("inhabilitado")
+    document.querySelector("#boton-iniciar-partida").classList.add("deshabilitar-click")
 }
 function mostrarBoton(){
-
-    document.querySelector("#boton-iniciar-partida").classList.remove("ocultar")
+    document.querySelector("#contenedor-boton").classList.remove("inhabilitado")
+    document.querySelector("#boton-iniciar-partida").classList.remove("deshabilitar-click")
 }
 
 function mostrarMovimientoMaquina(numero) {

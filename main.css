@@ -33,12 +33,15 @@ background-color: rgb(61, 61, 61);
     height: 50px;
     font-size: 20px;
     font-family: 'Gluten', cursive;
-    background-color: rgb(37, 141, 63);
+    background-color: rgb(28, 109, 48);
     border: 5px solid black;
     border-radius: 10px;
 }
 .ocultar{
     display: none;
+}
+.inhabilitado{
+    filter: brightness(0.3);
 }
 p {
     font-family: 'Gluten', cursive;
