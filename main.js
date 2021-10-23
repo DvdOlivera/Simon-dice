@@ -85,7 +85,6 @@ function retraso(tiempo) {
 }
 const movimientosMaquina = [];
 const movimientosUsuario = [];
-const turnos = 0;
 
 async function ejecutarMaquina(){
     deshabilitarClick();
