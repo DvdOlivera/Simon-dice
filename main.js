@@ -1,10 +1,8 @@
-
 function sonidoClickAmarillo(){
     const bleepAmarillo = new Audio();
     bleepAmarillo.src="sounds/sonido-amarillo.wav"
     bleepAmarillo.currentTime = 0;
     bleepAmarillo.play ();
-    
 };
 
 function sonidoClickAzul(){
@@ -12,31 +10,27 @@ function sonidoClickAzul(){
     bleepAzul.src="sounds/sonido-azul.wav"
     bleepAzul.currentTime = 0;
     bleepAzul.play ();
-    
 };
 
 function sonidoClickRojo(){
     const bleepRojo = new Audio();
     bleepRojo.src="sounds/sonido-rojo.wav"
     bleepRojo.currentTime = 0;
-    bleepRojo.play ();
-    
+    bleepRojo.play ();    
 };
 
 function sonidoClickVerde(){
     const bleepVerde = new Audio();
     bleepVerde.src="sounds/sonido-verde.wav"
     bleepVerde.currentTime = 0;
-    bleepVerde.play ();
-    
+    bleepVerde.play ();  
 };
 
 function sonidoClickError(){
     const bleepError = new Audio();
     bleepError.src="sounds/sonido-error.wav"
     bleepError.currentTime = 0;
-    bleepError.play ();
-    
+    bleepError.play ();   
 }
 
 document.querySelectorAll(".area").forEach(element => {
