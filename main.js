@@ -144,7 +144,7 @@ function compararMovimientos(){
          imprimirResultado(resultado)
          deshabilitarClick();
          sonidoClickError()
-         await retraso(3000); 
+         await retraso(2000); 
          mostrarBoton()
         };
 
