@@ -1,30 +1,31 @@
-function sonidoClickAmarillo(){
-    const bleepAmarillo = new Audio();
-    bleepAmarillo.src="sounds/sonido-amarillo.wav";
-    bleepAmarillo.currentTime = 0;
-    bleepAmarillo.play ();
-};
-
-function sonidoClickAzul(){
-    const bleepAzul = new Audio();
-    bleepAzul.src="sounds/sonido-azul.wav";
-    bleepAzul.currentTime = 0;
-    bleepAzul.play ();
-};
-
-function sonidoClickRojo(){
-    const bleepRojo = new Audio();
-    bleepRojo.src="sounds/sonido-rojo.wav";
-    bleepRojo.currentTime = 0;
-    bleepRojo.play ();    
-};
-
-function sonidoClickVerde(){
-    const bleepVerde = new Audio();
-    bleepVerde.src="sounds/sonido-verde.wav";
-    bleepVerde.currentTime = 0;
-    bleepVerde.play ();  
-};
+function ejecutarSonido (colorArea){
+    
+        if (colorArea === "rojo" ){
+            const bleepRojo = new Audio();
+            bleepRojo.src="sounds/sonido-rojo.wav";
+            bleepRojo.currentTime = 0;
+            bleepRojo.play (); 
+        }
+        else if (colorArea === "verde" ){
+            const bleepVerde = new Audio();
+            bleepVerde.src="sounds/sonido-verde.wav";
+            bleepVerde.currentTime = 0;
+            bleepVerde.play ();
+        }
+        else if (colorArea === "azul" ){
+            const bleepAzul = new Audio();
+            bleepAzul.src="sounds/sonido-azul.wav";
+            bleepAzul.currentTime = 0;
+            bleepAzul.play ();
+        }
+        else if (colorArea === "amarillo" ){
+            const bleepAmarillo = new Audio();
+            bleepAmarillo.src="sounds/sonido-amarillo.wav";
+            bleepAmarillo.currentTime = 0;
+            bleepAmarillo.play ();
+        };
+    
+}
 
 function sonidoClickError(){
     const bleepError = new Audio();
@@ -59,20 +60,8 @@ function habilitarBoton(){
     document.querySelector("#boton-iniciar-partida").classList.remove("deshabilitar-click");
 };
 
-function mostrarMovimientoMaquina(numero) {
-    if (numero === 0){
-        sonidoClickVerde();
-    }
-    else if (numero === 1) {
-        sonidoClickAmarillo();
-    }
-    else if (numero === 2) {
-        sonidoClickRojo();
-    }
-    else if (numero === 3) {
-        sonidoClickAzul();
-    };
-    document.querySelectorAll(".area")[numero].classList.remove("desactivo") 
+function mostrarMovimiento(numero) {
+   document.querySelectorAll(".area")[numero].classList.remove("desactivo") 
     setTimeout(()=> {
         document.querySelectorAll(".area")[numero].classList.add("desactivo"); 
     }, 300);
@@ -91,13 +80,27 @@ async function ejecutarMaquina(){
     borrarTextoPartida();
     borrarMovimientosUsuario();
     movimientosMaquina.push(obtenerNumeroAlAzar(0,4));  
-    for (let movimiento of movimientosMaquina){
-    mostrarMovimientoMaquina(movimiento);
-    await retraso(700); 
-    };
+    await manejarMovimientoMaquina(movimientosMaquina)
     habilitarClick();
 };
-
+async function manejarMovimientoMaquina(movimientosMaquina){
+    for (let movimiento of movimientosMaquina){    
+        if (movimiento === 0){
+            ejecutarSonido("verde");
+        }
+        else if (movimiento === 1){
+            ejecutarSonido("amarillo");
+        }
+        else if (movimiento === 2){
+            ejecutarSonido("rojo");
+        }
+        else if (movimiento === 3){
+            ejecutarSonido("azul");
+        }
+        mostrarMovimiento(movimiento);
+        await retraso(700); 
+        };
+}
 function habilitarClick() {
 document.querySelector("#area-de-juego").classList.remove("deshabilitar-click");
 };
@@ -105,24 +108,27 @@ function deshabilitarClick() {
     document.querySelector("#area-de-juego").classList.add("deshabilitar-click");
 };
  function manejarMovimientoUsuario(e){
-    
+    ejecutarSonido(e.target.classList[1])
     guardarMovimientoUsuario(e);
     compararMovimientos();
 
 };
 
 function guardarMovimientoUsuario(e){
-    if(e.target.classList[1] === "verde"){
-        mostrarMovimientoMaquina(0);
+ const colorArea = e.target.classList[1];
+
+    if(colorArea === "verde"){
+        
+        mostrarMovimiento(0);
         movimientosUsuario.push(0); 
-   } else if(e.target.classList[1] === "amarillo"){
-        mostrarMovimientoMaquina(1)
+   } else if(colorArea === "amarillo"){
+        mostrarMovimiento(1)
        movimientosUsuario.push(1); 
-   } else if(e.target.classList[1] === "rojo"){
-        mostrarMovimientoMaquina(2)
-       movimientosUsuario.push(2); 
-   } else if(e.target.classList[1] === "azul"){
-        mostrarMovimientoMaquina(3);
+   } else if(colorArea === "rojo"){
+        mostrarMovimiento(2)
+        movimientosUsuario.push(2); 
+   } else if(colorArea === "azul"){
+        mostrarMovimiento(3);
        movimientosUsuario.push(3); 
    };
 };
